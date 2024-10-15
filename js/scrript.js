@@ -67,3 +67,44 @@ function fifthTask() {
 	return arr;
 }
 fifthTask()
+
+// Coding Exercise 4: 
+
+function firstTask() {
+	const arr = [3, 5, 8, 16, 20, 23, 50];
+	const result = [];
+	for (let i = 0; i < arr.length; i++) {
+		result[i] = arr[i]
+	}
+	console.log(result);
+	return result;
+}
+firstTask()
+
+function secondTask() {
+	const data = [5, 10, 'Shopping', 20, 'Homework'];
+	for (let i = 0; i < data.length; i++) {
+		let a = data[i];
+		if (typeof a === "number") {
+			data[i] = data[i] * 2;
+		} else {
+			data[i] = data[i] + " - done";
+		}
+	}
+	console.log(data);
+	return data;
+}
+secondTask()
+
+function thirdTask() {
+	const data = [5, 10, 'Shopping', 20, 'Homework'];
+	const result = [];
+
+	for (let i = 0; i < data.length; i++) {
+
+		result[i] = data[data.length - 1 - i];
+	}
+	console.log(result);
+	return result;
+}
+thirdTask()
