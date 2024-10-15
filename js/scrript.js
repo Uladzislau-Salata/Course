@@ -37,3 +37,33 @@ function thirdTask() {
 	}
 }
 thirdTask()
+
+fourthTask
+for (let i = 2; i <= 16; i++) {
+	if (i % 2 === 0) {
+		continue;
+	} else {
+		console.log(i);
+	}
+}
+
+function fourthTask() {
+	let result = 1;
+	while (result < 14) {
+		result += 2;
+		console.log(result);
+	}
+}
+fourthTask()
+
+fifthTask
+
+function fifthTask() {
+	const arr = [];
+	for (let i = 5; i < 11; i++) {
+		arr[i - 5] = i
+	}
+	console.log(arr);
+	return arr;
+}
+fifthTask()
