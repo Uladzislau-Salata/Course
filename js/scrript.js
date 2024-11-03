@@ -1,32 +1,32 @@
 "use strict";
 
-const usdCurr = 28;
-const discount = 0.9;
-
-
-function convert(amount, curr) {
-	return curr * amount;
+// Задание 1
+function sayHello(name) {
+	return `Привет, ${name}`;
 }
+sayHello('alex');
 
-function promotion(result) {
-	console.log(result * discount);
+// Задание 2
+function returnNeighboringNumbers(number) {
+	return [number - 1, number, number + 1];
 }
-const res = convert(500, usdCurr);
-promotion(res);
+returnNeighboringNumbers(5)
 
+// Задание 3
 
-function test() {
-	for (let i = 0; i < 5; i++) {
-		console.log(i);
-		if (i === 3) {
-			return
+function getMathResult(a, b) {
+	if (b >= 1) {
+		let result = '';
+		for (let i = 1; i <= b; i++) {
+			if (i === b) {
+				result += `${a * i}`
+				break
+			}
+			result += `${a * i}---`
 		}
+		return result;
+	} else {
+		return a;
 	}
-	console.log('done');
 }
-test();
-
-function doNoting() { };
-
-console.log(doNoting() === undefined);
-
+console.log(getMathResult(10, 5));
