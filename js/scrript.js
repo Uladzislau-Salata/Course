@@ -1,32 +1,31 @@
 "use strict";
 
-// Задание 1
-function sayHello(name) {
-	return `Привет, ${name}`;
-}
-sayHello('alex');
+const str = "test";
+const arr = [1, 2, 4];
 
-// Задание 2
-function returnNeighboringNumbers(number) {
-	return [number - 1, number, number + 1];
-}
-returnNeighboringNumbers(5)
+// console.log(str[2]);
 
-// Задание 3
+// console.log(str.toUpperCase());
+console.log(str.toLowerCase());
+console.log(str);
 
-function getMathResult(a, b) {
-	if (b >= 1) {
-		let result = '';
-		for (let i = 1; i <= b; i++) {
-			if (i === b) {
-				result += `${a * i}`
-				break
-			}
-			result += `${a * i}---`
-		}
-		return result;
-	} else {
-		return a;
-	}
-}
-console.log(getMathResult(10, 5));
+const fruit = "Some fruit";
+
+console.log(fruit.indexOf("q"));
+
+const logg = "Hello world";
+
+console.log(logg.slice(6, 11));
+
+console.log(logg.substring(6, 11));
+
+// console.log(logg.substr(6, 5));
+
+const num = 12.2;
+console.log(Math.round(num));
+
+const test = "12.2px";
+console.log(parseInt(test));
+console.log(parseFloat(test));
+
+
