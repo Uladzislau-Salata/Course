@@ -1,70 +1,51 @@
 "use strict";
 // Место для первой функции
-// function calculateVolumeAndArea(numder) {
-// 	if (typeof (numder) != 'string' && numder > 0 && (numder + '').indexOf('.') === -1) {
-// 		console.log(`Объём куба:${numder * numder * numder}, площадь всей поверхности:${numder * numder * 6}`);
-// 	} else {
-// 		console.log("При вычислении произошла ошибка");
-// 	}
-// }
-
-
-function calculateVolumeAndArea(length) {
-	if (typeof (length) !== 'number' || length < 0 || !Number.isInteger(length)) {
-		return console.log("При вычислении произошла ошибка");
+function getTimeFromMinutes(minutes) {
+	if (typeof (minutes) !== 'number' || !Number.isInteger(minutes) || minutes < 0) {
+		return "Ошибка, проверьте данные"
 	}
 
-	let volume = 0,
-		area = 0;
+	const hours = Math.floor(minutes / 60);
+	const minut = minutes % 60;
 
-	volume = length * length * length;
-	// length ** 3 - это тоже самое, что и выше или варианты через цикл.
-	// ** - это оператор степени, напоминаю. Но онлайн редактор его не принимает =/
-	area = 6 * (length * length);
+	let hoursStr = '';
+	switch (hours) {
+		case 0:
+			hoursStr = 'часов'
+			break;
+		case 1:
+			hoursStr = 'час'
+			break;
+		case 2:
+			hoursStr = 'часа'
+			break;
+		case 3:
+			hoursStr = 'часа'
+			break;
+		case 4:
+			hoursStr = 'часа'
+			break;
 
-	console.log(`Объем куба: ${volume}, площадь всей поверхности: ${area}`);
+		default:
+			hoursStr = 'часов'
+			break;
+	}
+	return `Это ${hours} ${hoursStr} и ${minut} минут`
 }
 
-calculateVolumeAndArea(5);
-calculateVolumeAndArea(15);
-calculateVolumeAndArea(15.5);
-calculateVolumeAndArea('15');
-calculateVolumeAndArea(-15);
+getTimeFromMinutes(150);
+getTimeFromMinutes(50);
+getTimeFromMinutes(0);
+getTimeFromMinutes(-150);
 
 
 
-
-// Место для второй функции
-function getCoupeNumber(seatNumber) {
-	if (!Number.isInteger(seatNumber) || seatNumber < 0) {
-		return console.log("Ошибка. Проверьте правильность введенного номера места");
-	} else if (seatNumber === 0 || seatNumber > 36) {
-		return console.log("Таких мест в вагоне не существует");
-	} else {
-		if (seatNumber % 4 === 0) {
-			return console.log(Math.floor(seatNumber / 4 - 1) + 1);
-		}
-		return console.log(Math.floor(seatNumber / 4) + 1);
+function findMaxNumber(n1, n2, n3, n4) {
+	if (typeof (n1) !== 'number' || typeof (n2) !== 'number' || typeof (n3) !== 'number' || typeof (n4) !== 'number' || n1 === "undefined" || n2 === "undefined" || n3 === "undefined" || n4 === "undefined") {
+		return console.log(0);
 	}
+	return console.log(Math.max(n1, n2, n3, n4));
+
 }
 
-function getCoupeNumber(seatNumber) {
-	if (typeof (seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)) {
-		return "Ошибка. Проверьте правильность введенного номера места";
-	}
-
-	if (seatNumber === 0 || seatNumber > 36) {
-		return "Таких мест в вагоне не существует";
-	}
-
-	return Math.ceil(seatNumber / 4);
-	// тут очень много вариантов решения, но выбрал один из элегантных :)
-}
-
-getCoupeNumber(33);
-getCoupeNumber(7);
-getCoupeNumber(300);
-getCoupeNumber(0);
-getCoupeNumber(7.7);
-getCoupeNumber(-10);
-getCoupeNumber('Hello');
+findMaxNumber(8, 9, 5, 55);
