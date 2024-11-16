@@ -1,51 +1,45 @@
 "use strict";
 // Место для первой функции
-function getTimeFromMinutes(minutes) {
-	if (typeof (minutes) !== 'number' || !Number.isInteger(minutes) || minutes < 0) {
-		return "Ошибка, проверьте данные"
+function fib(num) {
+	if (typeof (num) !== 'number' || !Number.isInteger(num) || num <= 0) {
+		return "";
 	}
 
-	const hours = Math.floor(minutes / 60);
-	const minut = minutes % 60;
+	let result = '';
+	let first = 0;
+	let second = 1;
 
-	let hoursStr = '';
-	switch (hours) {
-		case 0:
-			hoursStr = 'часов'
-			break;
-		case 1:
-			hoursStr = 'час'
-			break;
-		case 2:
-			hoursStr = 'часа'
-			break;
-		case 3:
-			hoursStr = 'часа'
-			break;
-		case 4:
-			hoursStr = 'часа'
-			break;
-
-		default:
-			hoursStr = 'часов'
-			break;
+	if (num === 1) {
+		return result + `${first}`;
 	}
-	return `Это ${hours} ${hoursStr} и ${minut} минут`
+	if (num === 2) {
+		return result + `${first}` + ` ${second}`;
+	}
+
+	result = (`${first}` + ` ${second}`);
+
+	for (let i = 2; i < num; i++) {
+		let lastSum = first + second;
+
+		result += ` ${lastSum}`;
+
+		first = second;
+		second = lastSum;
+	}
+	return result;
 }
 
-getTimeFromMinutes(150);
-getTimeFromMinutes(50);
-getTimeFromMinutes(0);
-getTimeFromMinutes(-150);
+fib(4);
+//  => ''0 1 1 2"
 
+fib(7);
+//  => ''0 1 1 2 3 5 8"
 
+fib('7');
+//  => ''"
 
-function findMaxNumber(n1, n2, n3, n4) {
-	if (typeof (n1) !== 'number' || typeof (n2) !== 'number' || typeof (n3) !== 'number' || typeof (n4) !== 'number' || n1 === "undefined" || n2 === "undefined" || n3 === "undefined" || n4 === "undefined") {
-		return console.log(0);
-	}
-	return console.log(Math.max(n1, n2, n3, n4));
+fib(1);
+//  => "0"
 
-}
-
-findMaxNumber(8, 9, 5, 55);
+fib(0);
+// => ''"
