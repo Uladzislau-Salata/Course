@@ -1,45 +1,26 @@
 "use strict";
-// Место для первой функции
-function fib(num) {
-	if (typeof (num) !== 'number' || !Number.isInteger(num) || num <= 0) {
-		return "";
-	}
 
-	let result = '';
-	let first = 0;
-	let second = 1;
-
-	if (num === 1) {
-		return result + `${first}`;
-	}
-	if (num === 2) {
-		return result + `${first}` + ` ${second}`;
-	}
-
-	result = (`${first}` + ` ${second}`);
-
-	for (let i = 2; i < num; i++) {
-		let lastSum = first + second;
-
-		result += ` ${lastSum}`;
-
-		first = second;
-		second = lastSum;
-	}
-	return result;
+function first() {
+	//do something
+	setTimeout(function () {
+		console.log(1);
+	}, 500);
 }
 
-fib(4);
-//  => ''0 1 1 2"
+function second() {
+	console.log(2);
+}
 
-fib(7);
-//  => ''0 1 1 2 3 5 8"
+first();
+second();
 
-fib('7');
-//  => ''"
+function learnJS(lang, callback) {
+	console.log(`Я учу ${lang}`);
+	callback();
+}
 
-fib(1);
-//  => "0"
+function done() {
+	console.log('Я прошёл этот урок!');
+}
 
-fib(0);
-// => ''"
+learnJS('JavaScript', done);
