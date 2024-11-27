@@ -1,43 +1,31 @@
 "use strict";
 
-const someString = 'This is some strange string';
+let str = "some";
+let strObj = new String(str);
 
-function reverse(str) {
+console.log(typeof (str));
+console.log(typeof (strObj));
 
-	if (str.length == 0) {
-		return console.log("Ошибка")
+console.dir([1, 2, 3]);
+
+const soldier = {
+	health: 400,
+	armor: 100,
+	sayHello: function () {
+		console.log("Hello");
 	}
-	const arrStringReverse = str.split('').reverse();
-	let readyString = '';
+};
 
+const jonh = Object.create(soldier);
 
-	for (let elem of arrStringReverse) {
-		readyString += elem;
-	}
+// const jonh = {
+// 	health: 100
+// };
 
-	return console.log(readyString);
-}
-reverse(someString);
+// jonh._proto_ = soldier;
 
+// Object.setPrototypeOf(jonh, soldier);
 
-const baseCurrencies = ['USD', 'EUR'];
-const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+// console.log(jonh.armor);
 
-function availableCurr(arrCurrencies, overCurrencies) {
-	if (arrCurrencies.length == 0) {
-		return console.log("Нет доступных валют");
-	}
-
-	let str = `Доступные валюты:\n`;
-	let arrAvailableCurrencies = arrCurrencies.filter(function (elem) {
-		if (elem === overCurrencies) {
-			return false;
-		} else {
-			str += `${elem}\n`;
-			return true;
-		}
-	})
-	return console.log(str);
-}
-
-availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY');
+jonh.sayHello();
