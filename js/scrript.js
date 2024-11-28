@@ -1,76 +1,49 @@
 "use strict";
 
-const personalMovieDB = {
-	count: 0,
-	movies: {},
-	actors: {},
-	genres: [],
-	privat: false,
-	start: function () {
-		personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", '');
-		while (personalMovieDB.count == "" || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-			personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", '');
+const shoppingMallData = {
+	shops: [
+		{
+			width: 10,
+			length: 5
+		},
+		{
+			width: 15,
+			length: 7
+		},
+		{
+			width: 20,
+			length: 5
+		},
+		{
+			width: 8,
+			length: 10
 		}
-	},
-	rememberMyFilms: function () {
-		for (let i = 0; i < 2; i++) {
-			const a = prompt("Один из последних просмотренных фильмов?", ''),
-				b = prompt("На сколько оцените его?", '');
-			if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-				personalMovieDB.movies[a] = b;
-				console.log('done');
-			} else {
-				console.log('error');
-				i--;
-			}
-		}
-	},
-	detectPersonalLevel: function () {
-		if (personalMovieDB.count < 10) {
-			console.log("Просмотрено довольно мало фильмов");
-		} else if (personalMovieDB.count >= 10 && personalMovieDB < 30) {
-			console.log("Просмотрено довольно мало фильмов");
-		} else if (personalMovieDB.count > 30) {
-			console.log("Вы киноман");
-		} else {
-			console.log("Произошла ошибка");
-		}
-	},
-	showMyDB: function () {
-		if (personalMovieDB.privat != true) {
-			console.log(personalMovieDB);
-		}
-	},
-	writeYourGenres: function () {
-		for (let i = 1; i <= 3; i++) {
+	],
+	height: 5,
+	moneyPer1m3: 30,
+	budget: 50000
+}
 
-			let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+function isBudgetEnough(shop) {
+	let storeArea = 0;
+	let storeVolume = 0;
+	let storуHeating = 0;
 
-			if (genre === "" || genre === null) {
-				console.log("Вы ввели не корректные данные или не ввели вовсе");
-				i--;
-			} else {
-				personalMovieDB.genres[i - 1] = genre;
-			}
-		}
-		// console.log(personalMovieDB);
-		personalMovieDB.genres.forEach((elem, index) => {
-			console.log(`Либимый жанр #${index + 1}- это ${elem}`)
-		})
-	},
-	toggleVisbleMyDB: function () {
-		if (personalMovieDB.privat) {
-			personalMovieDB.privat = false;
-		} else {
-			personalMovieDB.privat = true;
+	for (const element of shop.shops) {
+		for (const key in element) {
+			storeArea += element.width * element.length;
 		}
 	}
-};
 
-// personalMovieDB.start();
-// personalMovieDB.rememberMyFilms();
-// personalMovieDB.detectPersonalLevel();
-// personalMovieDB.showMyDB();
-personalMovieDB.writeYourGenres();
-// personalMovieDB.toggleVisbleMyDB();
-// console.log(personalMovieDB.privat);
+	storeVolume = storeArea * shop.height;
+	storуHeating = storeVolume * shop.moneyPer1m3;
+
+
+	if (shop.budget - storуHeating >= 0) {
+		return console.log("Бюджета достаточно");
+	} else {
+		return console.log("Бюджета недостаточно");
+	}
+}
+
+isBudgetEnough(shoppingMallData);
