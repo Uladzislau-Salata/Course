@@ -1,26 +1,55 @@
 "use strict";
 
-const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', "Somebody"];
+//to string
 
-function sortStudentsByGroups(arr) {
-	arr.sort();
+// 1);
 
-	let a = [],
-		b = [],
-		c = [],
-		rest = [];
+// console.log(typeof (String(null)));
+console.log(typeof (String(4)));
 
-	for (let i = 0; i < arr.length; i++) {
-		if (i < 3) {
-			a.push(arr[i]);
-		} else if (i < 6) {
-			b.push(arr[i]);
-		} else if (i < 9) {
-			c.push(arr[i]);
-		} else {
-			rest.push(arr[i]);
-		}
-	}
-	return console.log([a, b, c, `Оставшиеся студенты: ${rest.length == 0 ? '-' : rest.join(", ")}`]);
+// 2)
+console.log(typeof (5 + ''));
+
+const num = 5;
+
+console.log("https://vk.com/catalog/" + num);
+
+const fontSize = 26 + "px";
+
+// To number
+//  1)
+console.log(typeof (Number("4")));
+
+// 2)
+
+console.log(typeof (+"5"));
+
+// 3)
+
+console.log(typeof (parseInt("15px", 10)));
+
+let answ = +prompt("Hello", "");
+
+// To boolean
+
+// 0, '', null, undefined, Nan:
+// 1)
+let switcher = null;
+
+if (switcher) {
+	console.log('working...');
 }
-sortStudentsByGroups(students);
+
+switcher = 1;
+
+if (switcher) {
+	console.log('working...');
+}
+
+// 2)
+
+console.log(typeof (Boolean("5")));
+
+// 3)
+
+console.log(typeof (!!"5"));
