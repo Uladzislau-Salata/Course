@@ -1,55 +1,49 @@
 "use strict";
 
-//to string
+// let number = 5; debugger
 
-// 1);
+// function logNumber() {
+// 	// let number = 4;
+// 	console.log(number); debugger
+// }
 
-// console.log(typeof (String(null)));
-console.log(typeof (String(4)));
+// number = 6;
 
-// 2)
-console.log(typeof (5 + ''));
+// logNumber(); debugger
 
-const num = 5;
+// number = 8;
 
-console.log("https://vk.com/catalog/" + num);
+// logNumber(); debugger
 
-const fontSize = 26 + "px";
+function createCounter() {
+	let counter = 1;
 
-// To number
-//  1)
-console.log(typeof (Number("4")));
+	const myFunction = function () {
+		debugger
+		counter = counter + 1; debugger
+		return counter; debugger
+	}
 
-// 2)
+	return myFunction;
+}
+debugger
+const increment = createCounter(); debugger
+const c1 = increment(); debugger
+const c2 = increment(); debugger
+const c3 = increment(); debugger
 
-console.log(typeof (+"5"));
+console.log(c1, c2, c3);
 
-// 3)
-
-console.log(typeof (parseInt("15px", 10)));
-
-let answ = +prompt("Hello", "");
-
-// To boolean
-
-// 0, '', null, undefined, Nan:
-// 1)
-let switcher = null;
-
-if (switcher) {
-	console.log('working...');
+{
+	let msg = "hello";
 }
 
-switcher = 1;
+console.log(msg);
 
-if (switcher) {
-	console.log('working...');
+for (let i = 0; i < 9; i++) {
+	for (let j = 0; j < 9; j++) {
+		let num = 3;
+
+	}
+	console.log(num);
 }
-
-// 2)
-
-console.log(typeof (Boolean("5")));
-
-// 3)
-
-console.log(typeof (!!"5"));
