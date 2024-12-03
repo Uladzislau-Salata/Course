@@ -1,49 +1,41 @@
 "use strict";
 
-// let number = 5; debugger
+// let x = 5;
+// alert(x++);
 
-// function logNumber() {
-// 	// let number = 4;
-// 	console.log(number); debugger
-// }
+// [ ] + false - null + true
 
-// number = 6;
+// console.log(typeof ([] + false)); // false
+// console.log([] + false - null + true); // NAN
 
-// logNumber(); debugger
+// let y = 1;
+// let x = y = 2;
+// alert(x);
 
-// number = 8;
+// console.log([] + 1 + 2); //12
 
-// logNumber(); debugger
+// alert("1"[0]); //1
 
-function createCounter() {
-	let counter = 1;
+// console.log(2 && 1 && null && 0 && undefined); //null
+// и запинается на лжи
+// или запинаетс на правде
 
-	const myFunction = function () {
-		debugger
-		counter = counter + 1; debugger
-		return counter; debugger
-	}
+// console.log(!!(a && b) === (a && b));
 
-	return myFunction;
-}
-debugger
-const increment = createCounter(); debugger
-const c1 = increment(); debugger
-const c2 = increment(); debugger
-const c3 = increment(); debugger
+// alert(null || 2 && 3 || 4) //3
 
-console.log(c1, c2, c3);
 
-{
-	let msg = "hello";
-}
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
+// console.log(a == b); //false
 
-console.log(msg);
 
-for (let i = 0; i < 9; i++) {
-	for (let j = 0; j < 9; j++) {
-		let num = 3;
+// alert(+"Infinity"); //Infinity
+// console.log(+"Infinity");
 
-	}
-	console.log(num);
-}
+// console.log("Ёжик" > "яблоко"); //false
+
+// console.log(0 || "" || 2 || undefined || true || falsе);//2
+
+
+
