@@ -1,41 +1,57 @@
 "use strict";
 
-// let x = 5;
-// alert(x++);
+const restorantData = {
+	menu: [
+		{
+			name: 'Salad Caesar',
+			price: '14$'
+		},
+		{
+			name: 'Pizza Diavola',
+			price: '9$'
+		},
+		{
+			name: 'Beefsteak',
+			price: '17$'
+		},
+		{
+			name: 'Napoleon',
+			price: '7$'
+		}
+	],
+	waitors: [
+		{ name: 'Alice', age: 22 }, { name: 'John', age: 24 }
+	],
+	averageLunchPrice: '20$',
+	openNow: true
+};
 
-// [ ] + false - null + true
+function isOpen(prop) {
+	let answer = '';
+	prop ? answer = 'Открыто' : answer = 'Закрыто';
 
-// console.log(typeof ([] + false)); // false
-// console.log([] + false - null + true); // NAN
+	return answer;
+}
 
-// let y = 1;
-// let x = y = 2;
-// alert(x);
+console.log(isOpen(restorantData.openNow))
 
-// console.log([] + 1 + 2); //12
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+	if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < +average.slice(0, -1)) {
+		return 'Цена ниже средней';
+	} else {
+		return 'Цена выше средней';
+	}
+}
 
-// alert("1"[0]); //1
+console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
 
-// console.log(2 && 1 && null && 0 && undefined); //null
-// и запинается на лжи
-// или запинаетс на правде
+function transferWaitors(data) {
+	const copy = JSON.parse(JSON.stringify(data));;
 
-// console.log(!!(a && b) === (a && b));
+	copy.waitors[0] = { name: 'Mike', age: 32 };
+	return copy;
+}
 
-// alert(null || 2 && 3 || 4) //3
-
-
-// const a = [1, 2, 3];
-// const b = [1, 2, 3];
-// console.log(a == b); //false
-
-
-// alert(+"Infinity"); //Infinity
-// console.log(+"Infinity");
-
-// console.log("Ёжик" > "яблоко"); //false
-
-// console.log(0 || "" || 2 || undefined || true || falsе);//2
-
-
-
+transferWaitors(restorantData);
+// console.log(restorantData);
+// console.log(restorantData);
