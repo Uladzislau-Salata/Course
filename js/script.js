@@ -1,64 +1,47 @@
+/* Задания на урок:
+
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
 'use strict';
 
-const box = document.getElementById('box'),
-	btns = document.getElementsByTagName('button'),
-	circles = document.getElementsByClassName('circle'),
-	hearts = document.querySelectorAll('.heart'),
-	oneHeart = document.querySelector('.heart'),
-	wrapper = document.querySelector('.wrapper');
-
-// console.dir(box);
-
-// box.style.backgroundColor = 'blue';
-// box.style.width = '500px';
-
-box.style.cssText = "background-color:blue; width:500px";
-
-btns[1].style.borderRadius = "100%";
-
-circles[0].style.backgroundColor = 'red';
-
-// for (let i = 0; i < hearts.length; i++) {
-// 	hearts[i].style.backgroundColor = 'blue';
-// }
-
-hearts.forEach(item => {
-	item.style.backgroundColor = 'blue';
-});
-
-const div = document.createElement('div');
-// const text = createTextNode('тут был я');
-
-div.classList.add('black');
-// document.body.append(div);
-
-wrapper.append(div);
-// wrapper.appendChild(div); //старый
+const movieDB = {
+	movies: [
+		"Логан",
+		"Лига справедливости",
+		"Ла-ла лэнд",
+		"Одержимость",
+		"Скотт Пилигрим против..."
+	]
+};
 
 
+const promo = document.querySelectorAll('.promo__adv img');
+// console.dir(promo);
+promo.forEach(item => {
+	item.remove();
+})
 
-// wrapper.prepend(div);
+const promoGenre = document.querySelectorAll('.promo__genre');
+// console.dir(promoGenre[0].innerHTML);
+promoGenre[0].textContent = 'Драма';
 
-// hearts[0].before(div);
-// hearts[0].after(div);
+const promoBg = document.querySelector('.promo__bg');
+promoBg.style.backgroundImage = "url('img/bg.jpg')";
 
-// wrapper.insertBefore(div, hearts[1]); //старый
-
-// circles[0].remove();
-// wrapper.removeChild(hearts[1]);//старый
-
-// hearts[0].replaceWith(circles[0]);
-// wrapper.replaceChild(circles[0], hearts[0]);//старый
-
-
-div.innerHTML = '<h1>Hello World</h1>';
-
-// div.textContent = 'Hello';
-
-div.insertAdjacentHTML('afterend', '<h2>Hello</h2>')
-
-
-
-
-
-
+movieDB.movies.sort();
+// console.log(movieDB.movies);
+const promoList = document.querySelectorAll(".promo__interactive-item ");
+// console.dir(promoList);
+for (let i = 0; i < promoList.length; i++) {
+	promoList[i].innerHTML = `${i + 1}. ${movieDB.movies[i]}`;
+}
