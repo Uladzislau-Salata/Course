@@ -1,17 +1,20 @@
 'use strict';
 
+const box = document.querySelector('.box');
 
-const p = document.querySelectorAll("p");
-console.log(p);
+const newHeight = 100;
+const newWidth = 400;
 
-
-
-function loadScript(src) {
-	const script = document.createElement('script');
-	script.src = src;
-	script.async = false;
-	document.body.append(script);
+function changeParams(elem, h, w) {
+	elem.style.height = `${h ?? 200}px`;
+	elem.style.width = `${w ?? 200}px`;
+	elem.innerHTML = (h ?? 200) * (w ?? 200);
 }
 
-loadScript('test.js');
-loadScript('some.js');
+changeParams(box, newHeight, newWidth);
+
+let userName;
+let userKey;
+
+console.log(userName && userKey ?? 'User');
+
