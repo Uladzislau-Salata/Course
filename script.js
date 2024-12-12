@@ -1,38 +1,30 @@
 'use strict';
 
-// let id = Symbol('id');
+const birthday = Symbol('birthday');
 
-// const obj = {
-// 	name: 'Test',
-// 	[Symbol('id')]: 1,
-// 	getId: function () {
-// 		return this[id];
-// 	}
-// }
-
-
-// // // console.log(id == id2);
-
-// // obj[id] = 1;
-
-// // console.log(obj.getId());
-// console.log(obj[Object.getOwnPropertySymbols(obj)[0]]);
-
-// // for (let value in obj) {
-// // 	console.log(value);
-// // }
-
-
-
-const myAwesomeDB = {
-	movies: [],
-	actors: [],
-	[Symbol.for('id')]: 123
+const user = {
+	name: 'Alex',
+	surName: 'Smith',
+	[birthday]: '20/04/2021',
+	showMyPublicData: function () {
+		console.log(`${this.name} ${this.surName}`);
+	}
 }
+// Object.defineProperty(user, 'birthday', { value: prompt('Date?'), enumerable: true, configurable: true });
 
-//  Сторонний код библеотеки
 
-myAwesomeDB.id = "324234234";
+console.log(Object.getOwnPropertyDescriptor(user, birthday));
 
-console.log(myAwesomeDB[Symbol.for("id")]);
-console.log(myAwesomeDB);
+Object.defineProperty(user, 'showMyPublicData', { enumerable: false });
+for (let key in user) console.log(key);
+
+Object.defineProperties("user", {
+	name: { writable: false },
+	surname: { writable: false }
+})
+
+
+//writable
+//enumerable
+//configurable
+
