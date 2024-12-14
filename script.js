@@ -1,60 +1,33 @@
 'use strict';
 
-const user = {
-	name: 'Alex',
-	surName: 'Smith',
-	birthday: '20/04/2021',
-	showMyPublicData: function () {
-		console.log(`${this.name} ${this.surName}`);
-	}
+const arr = ['Alex', 'Ann', 'Oleg', 'Alex'];
+
+function unique(arr) {
+	return Array.from(new Set(arr));
 }
-const userMap = new Map(Object.entries(user));
-// console.log(userMap);
+console.log(unique(arr));
 
-const newUserObj = Object.fromEntries(userMap);
-console.log(newUserObj);
+// const set = new Set(arr);
 
+// set.add('Ivan')
+// 	.add('Oleg');
 
-const shops = [
-	{ rice: 500 },
-	{ oil: 200 },
-	{ bread: 50 }
-];
-const butget = [5000, 15000, 25000];
+// console.log(set);
 
-const map = new Map([
-	[{ paper: 400 }, 8000]
-]);
-shops.forEach((shop, i) => {
-	map.set(shop, butget[i]);
-});
+// set.delete(value);
+// set.has(value);
+// set.clear();
+// set.size;
 
-console.log(map);
-// console.log(map.get(shops[0]));
-// console.log(map.has(shops[0]));
-// map.delete(key);
-// map.clear();
-// map.size();
-// map.keys();
-// console.log(map.keys());
+// for (let value of set) console.log(value);
 
-// const goods = [];
+// set.forEach((value, valueAgaing, set) => {
+// 	console.log(value, valueAgaing);
+// });
 
-// for (let shop of map.keys()) {
-// 	goods.push(Object.keys(shop)[0]);
-// }
-// console.log(goods);
+console.log(set.values());
+console.log(set.keys());
+console.log(set.entries());
 
-// for (let price of map.values()) {
-// 	console.log(price);
-// }
-
-// for (let [shop, price] of map.entries()) {
-// 	console.log(price, shop);
-// }
-
-// map.forEach((value, key, map) => {
-// 	console.log(value, key);
-// })
 
 
