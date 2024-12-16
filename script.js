@@ -1,33 +1,21 @@
 'use strict';
 
-const arr = ['Alex', 'Ann', 'Oleg', 'Alex'];
+// const bigint = 126315465498498421316465494n;
 
-function unique(arr) {
-	return Array.from(new Set(arr));
-}
-console.log(unique(arr));
+const sameBigint = BigInt(126315465498498421316465494);
 
-// const set = new Set(arr);
+// console.log(typeof (bigint));
+// console.log(5n + 8);
+// console.log(Math.round(5n));
+// console.log(5n / 2n);
+// console.log(5n == 5);
 
-// set.add('Ivan')
-// 	.add('Oleg');
 
-// console.log(set);
+let bigint = 1n;
+let number = 2;
 
-// set.delete(value);
-// set.has(value);
-// set.clear();
-// set.size;
-
-// for (let value of set) console.log(value);
-
-// set.forEach((value, valueAgaing, set) => {
-// 	console.log(value, valueAgaing);
-// });
-
-console.log(set.values());
-console.log(set.keys());
-console.log(set.entries());
-
+console.log(bigint + BigInt(number));
+console.log(Number(bigint) + number);
+// console.log(+bigint + number);
 
 
