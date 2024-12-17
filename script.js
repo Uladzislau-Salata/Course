@@ -1,21 +1,43 @@
 'use strict';
 
-// const bigint = 126315465498498421316465494n;
+// function amountOfPages(summary) {
+// 	let num = 0;
 
-const sameBigint = BigInt(126315465498498421316465494);
+// 	for (let i = 1; i <= summary; i++) {
 
-// console.log(typeof (bigint));
-// console.log(5n + 8);
-// console.log(Math.round(5n));
-// console.log(5n / 2n);
-// console.log(5n == 5);
+// 		if (i < 10) {
+// 			num += String(i).length;
+// 		} else {
+// 			num += String(i).length;
+// 			if (num === summary) {
+// 				num = i;
+// 				break
+// 			}
+// 		}
+
+// 	}
+// 	return num;
+// }
 
 
-let bigint = 1n;
-let number = 2;
 
-console.log(bigint + BigInt(number));
-console.log(Number(bigint) + number);
-// console.log(+bigint + number);
+// amountOfPages(5);
+// amountOfPages(25);
+// amountOfPages(1095);
+// amountOfPages(185);
 
 
+function amountOfPages(summary) {
+	let result = '';
+	let n = 0;
+
+	for (let i = 1; i <= summary; i++) {
+		result += i;
+		if (result.length === summary) {
+			n = i;
+			break;
+		}
+	}
+
+	return n;
+}
