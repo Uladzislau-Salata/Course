@@ -1,26 +1,49 @@
 'use strict';
 
-function deepCount(arr) {
-	let num = 0;
-	for (const elem of arr) {
-		if (Array.isArray(elem)) {
-			num += 1;
-			num += deepCount(elem);
-		} else {
-			num += 1;
-		}
+const btns = document.querySelectorAll('button'),
+	wrapper = document.querySelector('.btn-block');
+
+// console.log(btns[0].classList.length);
+// console.log(btns[0].classList.item(1));
+// console.log(btns[1].classList.add('red'));
+// console.log(btns[0].classList.remove('blue'));
+// console.log(btns[0].classList.toggle('blue'));
+
+// if (btns[1].classList.contains('red')) {
+// 	console.log('red');
+// }
+
+btns[0].addEventListener('click', () => {
+	// if (!btns[1].classList.contains('red')) {
+	// 	btns[1].classList.add('red');
+	// } else {
+	// 	btns[1].classList.remove('red');
+	// }
+
+	btns[1].classList.toggle('red');
+
+});
+
+// console.log(btns[0].className);
+
+wrapper.addEventListener('click', (e) => {
+	// if (e.target && e.target.tagName == 'BUTTON') {
+	if (e.target && e.target.matches('button.red')) {
+		// if (e.target && e.target.classList.contains('blue')) {
+		console.log('Hello');
 	}
-	return num; debugger
-}
+})
 
-// Вариант с циклом
-function deepCount(a) {
-	let count = a.length;
-	for (let i = 0; i < a.length; i++) if (Array.isArray(a[i])) count += deepCount(a[i]);
-	return count;
-}
+// btns.forEach(btn => {
+// 	btn.addEventListener('click', () => {
+// 		console.log('Hello');
+// 	});
+// });
 
-// Вариант с методом reduce
-function deepCount(a) {
-	return a.reduce((s, e) => s + (Array.isArray(e) ? deepCount(e) : 0), a.length);
-}
+
+
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
+
+
