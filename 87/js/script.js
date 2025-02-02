@@ -1,48 +1,34 @@
 'use strict';
 
-const films = [
-	{
-		name: 'Titanic',
-		rating: 9
-	},
-	{
-		name: 'Die hard 5',
-		rating: 5
-	},
-	{
-		name: 'Matrix',
-		rating: 8
-	},
-	{
-		name: 'Some bad film',
-		rating: 4
-	}
+const funds = [
+	{ amount: -1400 },
+	{ amount: 2400 },
+	{ amount: -1000 },
+	{ amount: 500 },
+	{ amount: 10400 },
+	{ amount: -11400 }
 ];
 
-function showGoodFilms(arr) {
-	return arr.filter(item => item.rating >= 8)
+function getPositiveIncomeAmount(arr) {
+
+	return arr.filter(item => item.amount >= 0)
+		.map(item => item.amount)
+		.reduce((summ, current) => summ + current)
+
 }
 
-showGoodFilms(films);
+getPositiveIncomeAmount(funds);
 
-function showListOfFilms(arr) {
-	return arr.map(item => item.name).reduce((summ, current) => `${summ}, ${current}`
-	)
-}
-showListOfFilms(films);
+function getTotalIncomeAmount(arr) {
+	function summArr(arr) {
+		return arr
+			.map(item => item.amount)
+			.reduce((summ, current) => summ + current)
+	}
+
+	return arr.some(item => item.amount < 0) ? summArr(arr) : getPositiveIncomeAmount(arr)
 
 
-function setFilmsIds(arr) {
-	return arr.map((item, i) => {
-		item.id = i;
-		return item
-	});
 }
 
-const tranformedArray = setFilmsIds(films);
-
-
-function checkFilms(arr) {
-	return arr.every(item => item.id || item.id === 0 ? true : false)
-}
-checkFilms(tranformedArray);
+getTotalIncomeAmount(funds)
