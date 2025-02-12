@@ -1,48 +1,35 @@
 'use strict';
 
-// const btnPhone = document.querySelector('#iphone'),
-//     btnMacbook = document.querySelector('#macbook'),
-//     images = document.querySelectorAll('img');
+// const { setTimeout } = require("core-js/es7");
 
+// console.log(1);
 
-// let phoneAnimation;
+// setTimeout(() => {
+//     console.log('timeout');
+// }, 4000);
 
-// btnPhone.addEventListener('click', () => {
-//     if (!phoneAnimation) {
-//         phoneAnimation = images[0].animate([
-//             {
-//                 transform: 'translateY(0) rotate(0deg)',
-//                 filter: 'opacity(100%)'
-//             },
-//             {
-//                 transform: 'translateY(100px) rotate(180deg)',
-//                 filter: 'opacity(50%)'
-//             },
-//             {
-//                 transform: 'translateY(-100px) rotate(270deg)',
-//                 filter: 'opacity(75%)'
-//             },
-//             {
-//                 transform: 'translateY(0) rotate(360deg)',
-//                 filter: 'opacity(100%)'
-//             },
-//         ], {
-//             duration: 3000,
-//             iterations: Infinity
-//         });
-//     } else if (phoneAnimation.playState == 'paused') {
-//         phoneAnimation.play();
-//     } else {
-//         phoneAnimation.pause();
+// setTimeout(() => {
+//     console.log('timeout_4000');
+// }, 4000);
+
+// console.log(2);
+
+// let k = 0;
+
+// function count() {
+//     for (let i = 0; i < 1e9; i++) {
+//         k++;
 //     }
-// });
+//     alert("done");
+// }
+
+// count();
 
 
-const add1 = function (a) { return a + 1 };
-const addAll3 = function (a, b, c) { return a + b + c };
+setTimeout(() => {
+    console.log(1);
+}, 0);
 
-const compose = (...fns) => (x) => fns.reduceRight((res, fn) => fn(res), x);
+console.log(2);
 
-const composeWithArgs = (...fns) => (...arg) => fns.reduceRight((res, fn) => Array.isArray(res) ? fn(...res) : fn(res), arg);
 
-console.log(composeWithArgs(add1, addAll3)(1, 2, 3));
