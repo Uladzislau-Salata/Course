@@ -33,6 +33,7 @@
     "@babel/polyfill": "^7.12.1",
     "es6-promise": "^4.2.8",
     "jquery": "^3.7.1",
-    "nodelist-foreach-polyfill": "^1.2.0"
+    "nodelist-foreach-polyfill": "^1.2.0",
+    "tiny-slider": "^2.9.4"
   }
 }

@@ -14,3 +14,7 @@ img {
     margin: 40px 0;
     max-width: 300px;
 }
+
+.my-slider img {
+    width: 500px;
+}
