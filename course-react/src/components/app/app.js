@@ -6,10 +6,24 @@ import EmployeersAddForm from '../employeers-add-form/employeers-add-form';
 
 import './app.css';
 
+function WhoAmI({ name, surname, link }) {
+	return (
+		<div>
+			<h1>My name is {name()}, surename - {surname}</h1>
+			<a href={link}>My profile</a>
+
+		</div>
+	);
+};
+
+
 
 function App() {
 	return (
 		<div className="app">
+			<WhoAmI name={() => { return 'John' }} surname="Smith" link="facebook.com" />
+			<WhoAmI name={() => { return 'Alex' }} surname="Shepard" link="vk.com" />
+
 			<AppInfo />
 
 			<div className="search-panel">
