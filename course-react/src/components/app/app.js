@@ -1,3 +1,5 @@
+import { Component } from 'react';
+
 import AppInfo from '../app-info/app-info';
 import SearchPanel from '../search-panel/search-panel';
 import AppFilter from '../app-filter/app-filter';
@@ -6,88 +8,66 @@ import EmployeersAddForm from '../employeers-add-form/employeers-add-form';
 
 import './app.css';
 
-import { Component } from 'react';
-
-class WhoAmI extends Component {
-
+class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			years: 27,
-			text: '+++',
-			position: ''
+			data: [
+				{ name: "John C.", salary: 800, increase: false, id: 1 },
+				{ name: "Alex M.", salary: 3000, increase: true, id: 2 },
+				{ name: "Carl W.", salary: 15000, increase: false, id: 3 },
+			]
 		}
+		this.maxId = 4;
 	}
 
-	nextYear = () => {
-		this.setState(state => ({
-			years: state.years + 1
-		}))
-	}
-
-	commitInuputChanges = (e, color) => {
-		console.log(color);
-		this.setState({
-			position: e.target.value
+	deleteItem = (id) => {
+		this.setState(({ data }) => {
+			return {
+				data: data.filter(item => item.id !== id)
+			}
 		})
+	}
+
+
+	addItem = (name, salary) => {
+		// if (!addName || !addSalary) return;
+		const newItem = {
+			name,
+			salary,
+			increase: false,
+			id: this.maxId++
+		};
+		this.setState(({ data }) => ({
+			data: [...data, newItem]
+		}));
 
 	}
+
+
 
 	render() {
-		const { name, surname, link } = this.props;
-		const { position, years, text } = this.state;
 
 		return (
-			<div>
-				<button onClick={this.nextYear}>{text}</button>
-				<h1>My name is {name},surename - {surname},age-{years},position-{position}
-				</h1>
-				<a href={link}>My profile</a>
-				<form>
-					<span> Введите должность</span>
-					<input
-						type='text'
-						onChange={(e) => this.commitInuputChanges(e, 'some color')}
-					/>
-				</form>
+			<div className="app" >
+
+				<AppInfo />
+
+				<div className="search-panel">
+					<SearchPanel />
+					<AppFilter />
+				</div>
+
+				<EmployeersList
+					data={this.state.data}
+					onDelete={this.deleteItem} />
+				<EmployeersAddForm
+					onAdd={this.addItem}
+				/>
+
 			</div>
-		)
+		);
 	}
-
-}
-
-
-
-
-function App() {
-
-
-	const data = [
-		{ name: "John C.", salary: 800, increase: false, id: 1 },
-		{ name: "Alex M.", salary: 3000, increase: true, id: 2 },
-		{ name: "Carl W.", salary: 15000, increase: false, id: 3 },
-	];
-
-
-
-	return (
-		<div className="app">
-
-			<WhoAmI name='John' surname='Smith' link="facebook.com" />
-			<WhoAmI name='Alex' surname='Shepard' link="vk.com" />
-
-			<AppInfo />
-
-			<div className="search-panel">
-				<SearchPanel />
-				<AppFilter />
-			</div>
-
-			<EmployeersList data={data} />
-			<EmployeersAddForm />
-
-		</div>
-	);
 }
 
 export default App;
