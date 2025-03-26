@@ -1,9 +1,31 @@
 
+// import md5 from 'md5';
+
 class MarvelService {
 
-	_apiBase = 'https://gateway.marvel.com/v1/public/';
-	_apiKey = 'apikey=2a74b8ec54e23524fad42d9ef7083ae1';
-	_baseOffset = 210;
+	// _apiBase = 'https://gateway.marvel.com/v1/public/';// Marvel
+	// _apiPublicKey = '2a74b8ec54e23524fad42d9ef7083ae1';// Marvel
+	// _apiPrivateKey = '946d7fc8d27a238be0a5c79e2ad75a73e9531a3d';// Marvel
+	// _baseOffset = 210;// Marvel
+	// apiTs = Date.now().toString();// Marvel
+
+	_apiBase = 'https://marvel-server-zeta.vercel.app/';// Резервный
+	_apiPublicKey = 'd4eecb0c66dedbfae4eab45d312fc1df';// Резервный
+	_baseOffset = 1;// Резервный
+
+	// constructor() {
+	// 	this._apiHash = md5(this.apiTs + this._apiPrivateKey + this._apiPublicKey);
+	// }
+
+	// _generateHash = () => {
+	// 	this.apiTs = Date.now().toString();
+	// 	this._apiHash = md5(
+	// 		this.apiTs +
+	// 		this._apiPrivateKey +
+	// 		this._apiPublicKey
+	// 	);
+	// }
+
 
 	getResourse = async (url) => {
 		let res = await fetch(url);
@@ -14,12 +36,14 @@ class MarvelService {
 	}
 
 	getAllCharacters = async (offset = this._baseOffset) => {
-		const res = await this.getResourse(`${this._apiBase}characters?limit=9&offset=${offset}&${this._apiKey}`);
+		// this._generateHash();
+		const res = await this.getResourse(`${this._apiBase}characters?limit=9&offset=${offset}&apikey=${this._apiPublicKey}`);
 		return res.data.results.map(this._transformCharacter);
 	}
 
 	getCharacter = async (id) => {
-		const res = await this.getResourse(`${this._apiBase}characters/${id}?${this._apiKey}`);
+		// this._generateHash();
+		const res = await this.getResourse(`${this._apiBase}characters/${id}?&apikey=${this._apiPublicKey}`);
 
 		return this._transformCharacter(res.data.results[0]);
 	}
@@ -28,7 +52,7 @@ class MarvelService {
 		return {
 			id: char.id,
 			name: char.name,
-			description: char.description ? `${char.description.slice(0, 210)}...` : 'There is no description for this character',
+			description: char.description ? `${char.description.slice(0, 19)}...` : 'There is no description for this character',
 			thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
 			homepage: char.urls[0].url,
 			wiki: char.urls[1].url,
