@@ -19,8 +19,6 @@ class CharList extends Component {
 
     marvelService = new MarvelService();
 
-
-
     componentDidMount() {
         this.onRequest();
     }
