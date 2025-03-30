@@ -1,90 +1,110 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { Component, useState } from 'react';
 import { Container } from 'react-bootstrap';
-// import './App.css';
+import './TestApp.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// class Slider extends Component {
 
-class Form extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             autoplay: false,
+//             slide: 0
+//         }
+//     }
 
-    state = {
-        advOpen: false
-    }
+//     changeSlide = (i) => {
+//         this.setState(({ slide }) => ({
+//             slide: slide + i
+//         }))
+//     }
 
-    componentDidMount() {
-        setTimeout(this.handleClick, 3000)
-    }
+//     toggleAutoplay = () => {
+//         this.setState(({ autoplay }) => ({
+//             autoplay: !autoplay
+//         }))
+//     }
 
-
-    handleClick = () => {
-        this.setState(({ advOpen }) => ({
-            advOpen: !advOpen
-        }))
-    }
-
-
-    render() {
-        return (
-            <Container>
-                <form onClick={this.handleClick}
-                    className="w-50 border mt-5 p-3 m-auto"
-                    style={{
-                        'overflow': 'hidden',
-                        'position': 'relative'
-                    }}>
-                    <div className="mb-3">
-                        <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-
-                    {
-
-                        this.state.advOpen ?
-                            <Portal>
-                                <Msg />
-                            </Portal> : null
-
-                    }
-
+//     render() {
+//         return (
+//             <Container>
+//                 <div className="slider w-50 m-auto">
+//                     <img className="d-block w-100" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="slide" />
+//                     <div className="text-center mt-5">Active slide {this.state.slide} <br /> {this.state.autoplay ? 'auto' : null}</div>
+//                     <div className="buttons mt-3">
+//                         <button
+//                             className="btn btn-primary me-2"
+//                             onClick={() => this.changeSlide(-1)}>-1</button>
+//                         <button
+//                             className="btn btn-primary me-2"
+//                             onClick={() => this.changeSlide(1)}>+1</button>
+//                         <button
+//                             className="btn btn-primary me-2"
+//                             onClick={this.toggleAutoplay}>toggle autoplay</button>
+//                     </div>
+//                 </div>
+//             </Container>
+//         )
+//     }
+// }
 
 
-                </form>
-            </Container>
-        )
-    }
+const calcValue = () => {
+    console.log('random');
+    return Math.random() * (50 - 1) + 1;
 }
 
-const Portal = (props) => {
-    const node = document.createElement('div');
-    document.body.appendChild(node);
+const Slider = (props) => {
 
-    return ReactDOM.createPortal(props.children, node);
-}
+    const [slide, setSlide] = useState(() => calcValue());
+    const [autoplay, setAutoplay] = useState(false);
 
-const Msg = () => {
+    function changeSlide(i) {
+        setSlide(slide => slide + i);
+    }
+
+    function toggleAutoplay() {
+        setAutoplay(autoplay => !autoplay);
+    }
+
+    // const [state, setState] = useState({ slide: 0, autoplay: false });
+
+    // function changeSlide(i) {
+    //     setState(state => ({ ...state, slide: state.slide + i }));
+    // }
+    // function toggleAutoplay() {
+    //     setState(state => ({ ...state, autoplay: !state.autoplay }));
+    // }
+
     return (
-        <div
-            style={{
-                'width': '500px',
-                'height': '150px',
-                'backgroundColor': 'red',
-                'position': 'absolute',
-                'right': '0',
-                'bottom': '0'
-            }}>
-            Hello
-        </div>)
+        <Container>
+            <div className="slider w-50 m-auto">
+                <img className="d-block w-100" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="slide" />
+                <div className="text-center mt-5">Active slide {slide} <br />
+                    {autoplay ? 'auto' : null}
+                </div>
+                <div className="buttons mt-3">
+                    <button
+                        className="btn btn-primary me-2"
+                        onClick={() => changeSlide(-1)}>-1</button>
+                    <button
+                        className="btn btn-primary me-2"
+                        onClick={() => changeSlide(1)}>+1</button>
+                    <button
+                        className="btn btn-primary me-2"
+                        onClick={toggleAutoplay}>toggle autoplay</button>
+                </div>
+            </div>
+        </Container>
+    )
 }
 
-function App() {
+
+function TestApp() {
     return (
-        <Form />
+        <Slider />
     );
 }
 
-export default App;
+export default TestApp;
