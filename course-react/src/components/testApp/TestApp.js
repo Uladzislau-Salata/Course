@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { Component, useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import './TestApp.css';
 
@@ -13,6 +13,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //             slide: 0
 //         }
 //     }
+
+//     componentDidMount() {
+//         document.title = `Slide:${this.state.slide}`;
+//     }
+
+//     componentDidUpdate() {
+//         document.title = `Slide:${this.state.slide}`;
+//     }
+
+
 
 //     changeSlide = (i) => {
 //         this.setState(({ slide }) => ({
@@ -50,15 +60,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // }
 
 
-const calcValue = () => {
-    console.log('random');
-    return Math.random() * (50 - 1) + 1;
-}
-
 const Slider = (props) => {
 
-    const [slide, setSlide] = useState(() => calcValue());
+    const [slide, setSlide] = useState(0);
     const [autoplay, setAutoplay] = useState(false);
+
+    // function logging() {
+    //     console.log('log!');
+    // }
+
+    useEffect(() => {
+        console.log('effect');
+        document.title = `Slide:${slide}`;
+
+        // window.addEventListener('click', logging);
+
+        // return () => {
+        //     window.removeEventListener('click', logging);
+        // }
+
+    }, [slide]);
+
+
+    useEffect(() => {
+        console.log('autoplay');
+    }, [autoplay]);
 
     function changeSlide(i) {
         setSlide(slide => slide + i);
@@ -67,15 +93,6 @@ const Slider = (props) => {
     function toggleAutoplay() {
         setAutoplay(autoplay => !autoplay);
     }
-
-    // const [state, setState] = useState({ slide: 0, autoplay: false });
-
-    // function changeSlide(i) {
-    //     setState(state => ({ ...state, slide: state.slide + i }));
-    // }
-    // function toggleAutoplay() {
-    //     setState(state => ({ ...state, autoplay: !state.autoplay }));
-    // }
 
     return (
         <Container>
@@ -102,8 +119,14 @@ const Slider = (props) => {
 
 
 function TestApp() {
+    const [slider, setSlider] = useState(true);
+
+
     return (
-        <Slider />
+        <>
+            <button onClick={() => setSlider(false)}>Click</button>
+            {slider ? <Slider /> : null}
+        </>
     );
 }
 
