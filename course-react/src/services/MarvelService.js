@@ -42,11 +42,16 @@ const useMarvelService = () => {
 		return _transformCharacter(res.data.results[0]);
 	}
 
-	const getAllComics = async (offset = _baseOffset) => {
-		// this._generateHash();
-		const res = await request(`${_apiBase}comics?limit=9&offset=${offset}&apikey=${_apiPublicKey}`);
+	const getAllComics = async (offset = 0) => {
+		const res = await request(`${_apiBase}comics?orderBy=issueNumber&limit=8&offset=${offset}&apikey=${_apiPublicKey}`
+		);
 		return res.data.results.map(_transformComics);
-	}
+	};
+
+	const getComics = async (id) => {
+		const res = await request(`${_apiBase}comics/${id}?apikey=${_apiPublicKey}`);
+		return _transformComics(res.data.results[0]);
+	};
 
 	const _transformCharacter = (char) => {
 		return {
@@ -64,13 +69,20 @@ const useMarvelService = () => {
 		return {
 			id: comics.id,
 			title: comics.title,
-			price: comics.prices[0].price,
-			description: comics.description ? `${comics.description.slice(0, 19)}...` : 'There is no description for this comics',
-			thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension
-		}
-	}
+			description: comics.description || "There is no description",
+			pageCount: comics.pageCount
+				? `${comics.pageCount} p.`
+				: "No information about the number of pages",
+			thumbnail: comics.thumbnail.path + "." + comics.thumbnail.extension,
+			language: comics.textObjects[0]?.language || "en-us",
+			// optional chaining operator
+			price: comics.prices[0].price
+				? `${comics.prices[0].price}$`
+				: "not available",
+		};
+	};
 
-	return { loading, error, clearError, getAllCharacters, getCharacter, getAllComics }
+	return { loading, error, clearError, getAllCharacters, getCharacter, getAllComics, getComics }
 
 }
 
