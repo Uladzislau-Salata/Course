@@ -18,7 +18,7 @@ const App = () => {
 		<Router>
 			<div className="app">
 				<AppHeader />
-				<main>
+				{/* <main>
 					<Suspense fallback={<Spinner />}>
 						<Switch>
 							<Route exact path="/">
@@ -35,7 +35,7 @@ const App = () => {
 							</Route>
 						</Switch>
 					</Suspense>
-				</main>
+				</main> */}
 				<TestApp />
 				{/* <TestHook /> */}
 			</div>
