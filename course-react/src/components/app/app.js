@@ -5,6 +5,7 @@ import AppHeader from "../appHeader/AppHeader";
 import Spinner from '../spinner/Spinner';
 import TestApp from '../testApp/TestApp';
 import SliderApp from '../testApp/Slider/Slider';
+import SliderHoc from '../testApp/SliderHoc/SliderHoc';
 
 const Page404 = lazy(() => import('../pages/404'));
 const MainPage = lazy(() => import('../pages/MainPage'));
@@ -39,7 +40,8 @@ const App = () => {
 				</main> */}
 				{/* <TestApp /> */}
 				{/* <TestHook /> */}
-				<SliderApp />
+				{/* <SliderApp /> */}
+				<SliderHoc />
 			</div>
 		</Router>
 	)
