@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import AppHeader from "../appHeader/AppHeader";
 import Spinner from '../spinner/Spinner';
-import TestApp from '../testApp/TestApp'
+import TestApp from '../testApp/TestApp';
+import SliderApp from '../testApp/Slider/Slider';
 
 const Page404 = lazy(() => import('../pages/404'));
 const MainPage = lazy(() => import('../pages/MainPage'));
@@ -36,8 +37,9 @@ const App = () => {
 						</Switch>
 					</Suspense>
 				</main> */}
-				<TestApp />
+				{/* <TestApp /> */}
 				{/* <TestHook /> */}
+				<SliderApp />
 			</div>
 		</Router>
 	)
