@@ -7,6 +7,7 @@ import TestApp from '../testApp/TestApp';
 import SliderApp from '../testApp/Slider/Slider';
 import SliderHoc from '../testApp/SliderHoc/SliderHoc';
 import TestModal from '../testModal/testModal';
+import AppTestForm from '../testForm/AppTestForm'
 
 const Page404 = lazy(() => import('../pages/404'));
 const MainPage = lazy(() => import('../pages/MainPage'));
@@ -21,7 +22,7 @@ const App = () => {
 		<Router>
 			<div className="app">
 				<AppHeader />
-				<main>
+				{/* <main>
 					<Suspense fallback={<Spinner />}>
 						<Switch>
 							<Route exact path="/">
@@ -38,12 +39,13 @@ const App = () => {
 							</Route>
 						</Switch>
 					</Suspense>
-				</main>
+				</main> */}
 				{/* <TestApp /> */}
 				{/* <TestHook /> */}
 				{/* <SliderApp /> */}
 				{/* <SliderHoc /> */}
-				<TestModal />
+				{/* <TestModal /> */}
+				<AppTestForm />
 			</div>
 		</Router>
 	)
