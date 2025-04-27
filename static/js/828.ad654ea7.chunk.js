@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmarvel=self.webpackChunkmarvel||[]).push([[828],{828:(s,c,e)=>{e.r(c),e.d(c,{default:()=>i});var a=e(579);const i=s=>{let{data:c}=s;const{name:e,description:i,thumbnail:l}=c;return(0,a.jsxs)("div",{className:"single-comic",children:[(0,a.jsx)("img",{src:l,alt:e,className:"single-comic__char-img"}),(0,a.jsxs)("div",{className:"single-comic__info",children:[(0,a.jsx)("h2",{className:"single-comic__name",children:e}),(0,a.jsx)("p",{className:"single-comic__descr",children:i})]})]})}}}]);
+//# sourceMappingURL=828.ad654ea7.chunk.js.map
