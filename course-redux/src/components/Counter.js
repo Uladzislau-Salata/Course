@@ -1,13 +1,39 @@
+import { Component } from "react";
 
-const Counter = ({ counter, inc, dec, rnd }) => {
-	return (
-		<div className="jumbotrom">
-			<h1 >{counter}</h1>
-			<button onClick={dec} className="btn btn-primary">DEC</button>
-			<button onClick={inc} className="btn btn-primary">INC</button>
-			<button onClick={rnd} className="btn btn-primary">RND</button>
-		</div>
-	)
+import { connect } from "react-redux";
+import * as actions from '../action';
+
+// const Counter = ({ counter, inc, dec, rnd }) => {
+// 	return (
+// 		<div className="jumbotrom">
+// 			<h1 >{counter}</h1>
+// 			<button onClick={dec} className="btn btn-primary">DEC</button>
+// 			<button onClick={inc} className="btn btn-primary">INC</button>
+// 			<button onClick={rnd} className="btn btn-primary">RND</button>
+// 		</div>
+// 	)
+// }
+
+class Counter extends Component {
+
+
+	render() {
+		const { counter, inc, dec, rnd } = this.props;
+		return (
+			<div className="jumbotrom" >
+				<h1 >{counter}</h1>
+				<button onClick={dec} className="btn btn-primary">DEC</button>
+				<button onClick={inc} className="btn btn-primary">INC</button>
+				<button onClick={rnd} className="btn btn-primary">RND</button>
+			</div>
+		)
+	}
 }
 
-export default Counter;
+const mapStateToProps = (state) => {
+	return {
+		counter: state.value
+	}
+}
+
+export default connect(mapStateToProps, actions)(Counter);
