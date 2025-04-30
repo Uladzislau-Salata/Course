@@ -9,7 +9,9 @@ import App from './components/App';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
-const store = createStore(reducer);
+const store = createStore(reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 root.render(
   <React.StrictMode>
