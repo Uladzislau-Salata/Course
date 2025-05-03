@@ -57,17 +57,6 @@ export const activeFilterChanged = (filter) => {
     }
 }
 
-// export const activeFilterChanged = (filter) => (dispatch) => {
-//     setTimeout(() => {
-//         dispatch(
-//             {
-//                 type: 'ACTIVE_FILTER_CHANGED',
-//                 payload: filter
-//             }
-//         )
-//     }, 1000)
-// }
-
 export const heroCreated = (hero) => {
     return {
         type: 'HERO_CREATED',
