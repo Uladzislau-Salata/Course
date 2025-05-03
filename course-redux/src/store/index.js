@@ -1,8 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk';
 import heroes from '../reducers/heroes';
 import filters from '../reducers/filters';
 
-const stringMiddleware = (store) => (next) => (action) => {
+const stringMiddleware = () => (next) => (action) => {
 	if (typeof action === 'string') {
 		return next({
 			type: action
@@ -11,33 +12,12 @@ const stringMiddleware = (store) => (next) => (action) => {
 	return next(action)
 };
 
-const enhancer = (createStore) => (...args) => {
-	const store = createStore(...args);
-
-	const oldDispatch = store.dispatch;
-	store.dispatch = (action) => {
-		if (typeof action === 'string') {
-			return oldDispatch({
-				type: action
-			})
-		}
-		return oldDispatch(action)
-	}
-	return store;
-
-}
-
 const store = createStore(
 	combineReducers({ heroes, filters }),
 	compose(
-		applyMiddleware(stringMiddleware),
+		applyMiddleware(thunk, stringMiddleware),
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 	)
-	// compose(
-	// 	enhancer,
-	// 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-	// )
-	// applyMiddleware(stringMiddleware)
 );
 
 export default store;
