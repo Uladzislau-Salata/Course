@@ -1,7 +1,5 @@
 const timer = (id, deadline) => {
 
-	console.log(id);
-
 	const addZero = (num) => {
 		if (num <= 9) {
 			return '0' + num;
